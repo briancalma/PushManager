@@ -10,6 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 2. Install CURL https://curl.haxx.se/
 3. Clone or download this project :).
 4. CakePHP 2.x App 
+5. Dont forget to setup and install your service worker. 
 
 ### Installing
 1. Extract the zip version of this project. 
@@ -44,8 +45,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 Now you can use PushPanda Notification plugin in any controller in your application.
 
-==========================================
+===========================================
+
 Example: 
+
       public function sendNotif()
       {
            $data = [
@@ -54,7 +57,7 @@ Example:
             		    "icon" => 'the location of your icon',
             		    "image" => 'the location of your image',
             		    "click_action" => 'when the client click your notification this will redirect to what url?'
-   	                 ];
+   	               ];
             
             $this->Push->send($token_list,$data);
       }
@@ -66,6 +69,8 @@ $token_list - holds the tokens of your desired recievers.
 
 $data - contains your message information like title,body,icon,image and landing url. Take note that you must not change the keys to avoid any errors.
 
+The type of message that is passed by this data is a data payload message which means that you need to setup your service worker to handle this. 
+
 ## Built With
 
 * [CakePHP] (https://cakephp.org/) - PHP framework used.
@@ -73,7 +78,7 @@ $data - contains your message information like title,body,icon,image and landing
 
 ## Authors
 
-* **Brian Calma** - *Initial work* - [PushPanda](https://github.com/PushPanda)
+* **Brian Calma** - *Initial work* - [PushPanda](https://github.com/briancalma/PushPanda)
 
 ## Acknowledgments
 * Thanks a lot to sir Ado for giving me insights and lectures upon doing this project. 
