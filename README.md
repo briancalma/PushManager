@@ -16,7 +16,6 @@ These instructions will get you a copy of the project up and running on your loc
 1. Extract the zip version of this project. 
 2. Put it on your app/Plugin folder.
 
-===========================================
 
 ### Enabling the plugin
 1. Go to your app/Config/bootstrap.php and paste this line: 
@@ -32,7 +31,7 @@ These instructions will get you a copy of the project up and running on your loc
                             'Session'
                           ];
                           
-    Take note that if your are not using the Session component you are required to put it your components array.
+    Take note that if your are not using the Session component you are required to put it in your components array.
     
 #### Optional
     2.1 If you are using an auth component to authenticate login behaviors you must go to this directory   
@@ -48,7 +47,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 5. After logging in you are redirect to the dashboard and another form will show asking for your FCM server key. 
 
-6. Fill up the field and submit take note that the server key must is a string created by FCM. Go to your FCM console for more details. 
+6. Fill up the field and submit take note that the server key is a string created by FCM. Go to your FCM console for more details. 
 
 7. After fillingup the field a message will show that "You successfully installed PushPanda Notification Plugin"
    - if for some reasons an error occured during this phase please make sure that your apache server and your app/webroot/files folder are writable. 
@@ -104,7 +103,7 @@ You can also go this site : https://bodycrew.blobby.xyz/push_panda/pages
 
 ## Authors
 
-* **Brian Calma** - *Initial work* - [PushPanda](https://github.com/briancalma/PushPanda)
+* **Brian Calma** - *Initial work* - [PushPanda](https://github.com/briancalma/PushManager)
 
 ## Acknowledgments
 * Thanks a lot to sir Ado for giving me insights and lectures upon doing this project. 
