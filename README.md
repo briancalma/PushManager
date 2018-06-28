@@ -80,7 +80,7 @@ Example :
            $token_list = ["dWU9cirOa_0:APA91bHGTlVnd42890A8QGWd1LT6jhqskSt4ycTQe7DZ3TsQTj3gx1jWXWjXxac2UhSvaaeeJulygfLTiO8_V_7-d6jmI0zslnD9IT9aBxTyhWW6RTKnRJroShG2T_uczEFJaK-EOjel"];
            
            $data = [
-            			"title" => 'Your Awesome Title Here',
+                                "title" => 'Your Awesome Title Here',
             		    "body" => 'Some cool body you want to share to the world!',
             		    "icon" => 'the location of your icon',
             		    "image" => 'the location of your image',
@@ -95,8 +95,6 @@ Output:
 {"multicast_id":6544764715255567500,"success":1,"failure":0,"canonical_ids":0,"results":[{"message_id":"0:1530164660100134%e609af1cf9fd7ecd"}]}
 
 In the next update i will try to configure this plugin so that it can actually process this output information.
-
-You can also go this site : https://bodycrew.blobby.xyz/push_panda/pages
 
 ## Built With
 
