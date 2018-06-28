@@ -26,8 +26,6 @@ class PushComponent extends Component
  	   
  	   $data = $this->validate_data($data);
  	   
- 	   # debug($data);
- 	   
  	   # MESSAGE CONFIGURATION 
 	   $message = [
         			"title" => $data['title'],

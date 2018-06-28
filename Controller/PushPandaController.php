@@ -13,22 +13,26 @@ class PushPandaController extends PushManagerAppController
  *
  * @var mixed
  */
-	# public $scaffold;
 	
 	public function beforeFilter()
     {
-        # parent::beforeFilter();s
-        # $this->Auth->authenticate();
+        /* You can uncomment this line below if you are using an Auth Component. */
         # $this->Auth->allow('index','login','dashboard','logout');
     }
 	
     public function index()
     {
+        # Redirection to the login page.
         return $this->redirect(['action' => 'login']);
     }
     
     public function login()
     {
+        # If login form is submitted
+        # check if the username and password is equal to admin
+        # if so redirect to dashboard
+        # if not show and error
+         
         if($this->request->is('post'))
         {
             $username = $this->request->data['Push']['username'];
@@ -47,12 +51,16 @@ class PushPandaController extends PushManagerAppController
     
     public function dashboard()
     {
+        # Checks if the users successfully loginned
         if(empty($this->Session->read('isLoginned')))
         {
             $this->Flash->error(__('You must Login First!'));
             return $this->redirect(['action' => 'login']);
         }
         
+        # if the user sends the form with valid input
+        # this will store the server key value to the 
+        # webroot/files/serverKey.txt
         if($this->request->is('post'))
         {
             $serverKey = $this->request->data['Push']['serverKey'];
@@ -69,6 +77,7 @@ class PushPandaController extends PushManagerAppController
     
     public function logout()
     {
+        # logging out
         $this->Session->delete('isLoginned');
         return $this->redirect(['action' => 'login']);
     }
