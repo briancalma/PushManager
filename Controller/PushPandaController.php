@@ -1,7 +1,7 @@
 <?php
 App::uses('PushManagerAppController', 'PushManager.Controller');
-App::uses('Folder', 'Utility');
-App::uses('File', 'Utility');
+# App::uses('Folder', 'Utility');
+# App::uses('File', 'Utility');
 /**
  * PushPandas Controller
  */
@@ -19,7 +19,7 @@ class PushPandaController extends PushManagerAppController
     {
         # parent::beforeFilter();s
         # $this->Auth->authenticate();
-        $this->Auth->allow('index','login','dashboard','logout');
+        # $this->Auth->allow('index','login','dashboard','logout');
     }
 	
     public function index()
