@@ -25,9 +25,22 @@ These instructions will get you a copy of the project up and running on your loc
 
 2. Next go to your AppController.php and add this as component. Your code will look something like this.
     
-    public $components = ['PushManager.Push'];
+    public $components = [
+                            '... ',
+                            '.....',
+                            'PushManager.Push',
+                            'Session'
+                          ];
+                          
+    Take note that if your are not using the Session component you are required to put it your components array.
+    
+### Optional
+ 2.1 If you are using an auth component to authenticate login behaviors you must go to this directory   
+     app/Plugin/PushManager/Controller/PushComponent.php open it up.
 
-3. Go to this url : https://Your Host/push_manager/push_panda/login
+ 2.2 Uncomment this line of code : # $this->Auth->allow('index','login','dashboard','logout');
+
+3. Now you can go to this url : https://Your Host/push_manager/push_panda/login
 
 4. A login form will show asking for your username and password:
    username : admin
