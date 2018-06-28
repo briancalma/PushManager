@@ -72,7 +72,9 @@ The send() function gets an array as a first parameter and also another array fo
 
 
 #### Below is an example on how to use the plugin 
+
 Example :
+
       public function sendNotif()
       {
            $token_list = ["dWU9cirOa_0:APA91bHGTlVnd42890A8QGWd1LT6jhqskSt4ycTQe7DZ3TsQTj3gx1jWXWjXxac2UhSvaaeeJulygfLTiO8_V_7-d6jmI0zslnD9IT9aBxTyhWW6RTKnRJroShG2T_uczEFJaK-EOjel"];
