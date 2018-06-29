@@ -117,7 +117,8 @@ Output:
 
 ### Using the generated Service Worker and Token Initializer 
 1. Just go to whatever view/template you want to show the require permision pop up and add this line. 
-   <?php echo $this->element('PushManager.include_script'); ?>      
+
+    $this->element('PushManager.include_script');     
 
 2. You can then open your browser console to see the logs of the javascripts.
 
