@@ -81,5 +81,81 @@ class PushPandaController extends PushManagerAppController
         $this->Session->delete('isLoginned');
         return $this->redirect(['action' => 'login']);
     }
+
+    public function generate_main_scr_file()
+    {
+        # Let the user type 
+        # Auto Fill up things 
+        # print filled up things 
+        
+        if($this->request->is('post'))
+        {
+            
+            $sdk = $this->request->data['mainScript'];
+
+            if( !empty($sdk) )
+            {
+                $file = WWW_ROOT."files/sdkKey.txt";
+                file_put_contents($file,$sdk);
+                # Creation of service worker
+                $this->create_service_worker($sdk);
+                $this->Flash->success(__('Success in Configuring your Request Permission Script And your Service Worker!'));        
+            }
+
+            $this->Flash->error(__('Error Please Fill Up the fields first'));
+            return $this->redirect(['action' => 'dashboard']);   
+
+        }
+
+        exit();
+    }
+
+    public function create_service_worker($sdk)
+    {
+        # service worker file configurations 
+        # just attaching those strings to each other 
+
+        $script = "importScripts(\"https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js\");\n";
+        $script .= "importScripts(\"https://www.gstatic.com/firebasejs/5.0.4/firebase-messaging.js\");\n";
+        
+        # Appending the inserted fcm sdk config
+        $config = file_get_contents(WWW_ROOT."files/sdkKey.txt");
+
+        $script .= $config."\n";
+        
+        $script .= "const messaging = firebase.messaging();\n\n";
+
+        $script .= "var target_url = '';\n\n";
+
+        $script .= "messaging.setBackgroundMessageHandler( function(payload) {
+                        
+                       console.log('[SERVICE WORKER] : ',payload);
+                        
+                        var notificationTitle = payload.data.title;
+                        
+                        var notificationOption = {
+                                                \"body\" : payload.data.body,
+                                                \"icon\" : payload.data.icon,
+                                                \"click_action\" : payload.data.click_action,
+                                                \"image\" : payload.data.image
+                        };
+                    
+                        target_url = payload.data.click_action;                
+                                        
+                        return self.registration.showNotification(notificationTitle,notificationOption);
+                            
+                   });\n\n";
+                   
+         $script .= "self.addEventListener('notificationclick',function(event) {
+                        console.log('CLICK EVENT OCCURED!');
+    
+                        event.notification.close();
+    
+                        event.waitUntil( clients.openWindow(target_url) );
+                    });";
+
+        # Putting the final string to the webroot/js/sw.js file
+        file_put_contents(WWW_ROOT."js/sw.js",$script);
+    }
     
 }
