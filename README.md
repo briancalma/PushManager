@@ -1,4 +1,4 @@
-# PushPanda Notification Plugin
+# IronPush Notification Plugin
 PushPanda is a  CakePHP 2.x Plugin that is intended to give an easy way of sending push messages to your FCM Server(Firebase Cloud Messaging). 
 It sends push notification configured messages to your FCM server using CURL and allow clean flow with a minimal need of installation, with just few minutes you can see your Push Notification up running. 
 
