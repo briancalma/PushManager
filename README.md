@@ -45,16 +45,37 @@ These instructions will get you a copy of the project up and running on your loc
    username : admin
    password : admin
 
-5. After logging in you are redirect to the dashboard and another form will show asking for your FCM server key. 
+5. After logging in you are redirected to the dashboard and another form will show asking for your FCM server key and your FCM Web SDK. 
 
-6. Fill up the field and submit take note that the server key is a string created by FCM. Go to your FCM console for more details. 
+### Server Key Installation
+1. Fill up the field and submit take note that the server key is a string created by FCM. Go to your FCM console for more details. 
 
-7. After fillingup the field a message will show that "You successfully installed PushPanda Notification Plugin"
+2. After fillingup the field a message will show that "You successfully installed PushPanda Notification Plugin"
    - if for some reasons an error occured during this phase please make sure that your apache server and your app/webroot/files folder are writable. 
 
-8. You can then logout. Congrats you successfully installed the plugin!
+### Service Worker And FCM Token Initializer Script
+Take note that this method requires your server key so before going here you must provide your Server Key.
+If you want to automatically create a service worker that will handle the push notifications in the background and also a script that will automatically create an FCM token for you follow this steps : 
+1. Fill up the form asking for your FCM Web SDK , go to your FCM console and copy and paste your sdk your code must look something like this :
 
+        // Initialize Firebase
+        var config = {
+            apiKey: "YOUR-API-KEY",
+            authDomain: "AUTH-DOMAIN",
+            databaseURL: "DATABASE",
+            projectId: "PROJECT-ID",
+            storageBucket: "STORAGE-BUCKET",
+            messagingSenderId: "Sender ID"
+        };
+        
+        firebase.initializeApp(config);
+
+2. Submit the form and you will see a message saying "Success in Configuring your Request Permission Script And your Service Worker!". 
+
+
+You can then logout. Congrats you successfully installed the plugin!
 Now you can use PushPanda Notification plugin in any controller in your application.
+
 
 ### Using the Plugin
 To use the plugin be sure that you installed your service worker and needed javascript files in your application. It is worth noting that this plugin sends a DATA Payload message thus this means that you must configure your service worker to handle that type of messages. Wait for the other versions of this plugin for i might include the service worker and scripts generation 🐼.
@@ -94,8 +115,13 @@ Output:
 
 {"multicast_id":6544764715255567500,"success":1,"failure":0,"canonical_ids":0,"results":[{"message_id":"0:1530164660100134%e609af1cf9fd7ecd"}]}
 
-In the next update i will try to configure this plugin so that it can actually process this output information.
+### Using the generated Service Worker and Token Initializer 
+1. Just go to whatever view/template you want to show the require permision pop up and add this line. 
+   <?php echo $this->element('PushManager.include_script'); ?>      
 
+2. You can then open your browser console to see the logs of the javascripts.
+
+In the next update i will try to configure this plugin so that it can actually process the output information.
 ## Built With
 
 * [CakePHP] (https://cakephp.org/) - PHP framework used.

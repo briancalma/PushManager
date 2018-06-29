@@ -100,6 +100,7 @@ class PushPandaController extends PushManagerAppController
                 # Creation of service worker
                 $this->create_service_worker($sdk);
                 $this->Flash->success(__('Success in Configuring your Request Permission Script And your Service Worker!'));        
+                return $this->redirect(['action' => 'dashboard']);   
             }
 
             $this->Flash->error(__('Error Please Fill Up the fields first'));
